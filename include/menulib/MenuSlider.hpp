@@ -88,7 +88,6 @@ namespace mr {
         */
         void onRight(MenuNavigator* navigator) override;
 
-
         /**
         * @brief sets display label with respect to current value
         *

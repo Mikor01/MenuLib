@@ -10,22 +10,57 @@
 #include "menulib/MenuToggle.hpp"
 #include "menulib/MenuSlider.hpp"
 
+#ifdef _WIN32
+    #include <conio.h>
+#else
+    #include <termios.h>
+    #include <unistd.h>
+#endif
+//getch_ 0 witout echo 1 with echo
+char getch_(int echo) {
+    char ch;
+
+#ifdef _WIN32
+    if (echo) {
+        ch = _getche(); // get char with echo
+    } else {
+        ch = _getch();  // get char without echo
+    }
+#else
+    struct termios oldt, newt;
+    tcgetattr(STDIN_FILENO, &oldt); // grab old settings
+    newt = oldt;
+    newt.c_lflag &= ~ICANON;        // disable buffer
+
+    if (echo) {
+        newt.c_lflag |= ECHO;
+    } else {
+        newt.c_lflag &= ~ECHO;
+    }
+
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt); // apply new settings
+    ch = getchar();
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldt); // restore old settings
+#endif
+
+    return ch;
+}
+
+
 bool isRunning = true;
 bool soundEnabled = true;
 int volumeLevel = 50;
 
 void videoSettings(){
     std::cout << "\n[!] Video settings changed!\n";
-    std::cout << "Press Enter to continue...";
-    std::cin.ignore();
-    std::cin.get();
+    std::cout << "Press any key to continue...";
+    getch_(0);
 }
 
 void startGame(){
     std::cout << "\n[!] Game started!\n";
-    std::cout << "Press Enter to continue...";
-    std::cin.ignore();
-    std::cin.get();
+    std::cout << "Press any key to continue...";
+    getch_(0);
 }
 
 void stop(){
@@ -83,12 +118,13 @@ int main() {
             std::cout << "Selection: ";
 
             char input;
-            std::cin >> input;
+            //std::cin >> input;
+            input = getch_(0);
             input = std::tolower(input);
 
             switch (input) {
-                case 'w': --nav; break;
-                case 's': ++nav; break;
+                case 'w': nav.previous(); break;
+                case 's': nav.next(); break;
                 case 'a': nav.left(); break;
                 case 'd': nav.right(); break;
                 case 'e': nav(); break;
@@ -104,7 +140,7 @@ int main() {
         return 1;
     }
 
-    std::cout << "Goodbye!\n";
+    std::cout << "\nGoodbye!\n";
     delete mainMenu;
 
     return 0;

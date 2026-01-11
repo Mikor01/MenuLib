@@ -81,12 +81,18 @@ namespace mr{
 
             /**
             * @brief highlights next item in menu page.
+            * This is just a "forced" EXAMPLE of operator overloading being used.
+            * Otherwise, overloading this operator does not make much sense in this context.
             *
+            * @return reference to the MenuNavigator instance.
             */
             MenuNavigator& operator++();
             /**
             * @brief highlights previous item in menu page.
+            * This is just a "forced" EXAMPLE of operator overloading being used.
+            * Otherwise, overloading this operator does not make much sense in this context.
             *
+            * @return reference to the MenuNavigator instance.
             */
             MenuNavigator& operator--();
             /**

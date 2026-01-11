@@ -1,5 +1,6 @@
 #include "menulib/MenuSlider.hpp"
 #include "menulib/IMenuItem.hpp"
+#include <stdexcept>
 #include <string>
 
 namespace mr{
@@ -13,6 +14,12 @@ namespace mr{
         if(!func){
             throw std::invalid_argument("MenuToggle: Function cannot be null");
         }
+        if(min >= max){
+            throw std::invalid_argument("MenuToggle: Max cannot be equal or less than Min");
+        }
+        if(val < min || val > max) {
+            throw std::invalid_argument("MenuToggle: Initial value cannot be out of bounds");
+        }
         updateLabel();
     }
 
@@ -20,8 +27,8 @@ namespace mr{
         return true;
     }
 
-    void MenuSlider::onLeft(MenuNavigator* navigator)  {
-        if (m_value - m_step >= m_min) {
+    void MenuSlider::onLeft(MenuNavigator* navigator){
+        if (m_value - m_step >= m_min){
             m_value -= m_step;
             updateLabel();
             if (m_func){
@@ -30,18 +37,18 @@ namespace mr{
         }
     }
 
-    void MenuSlider::onRight(MenuNavigator* navigator) {
-        if (m_value + m_step <= m_max) {
+    void MenuSlider::onRight(MenuNavigator* navigator){
+        if (m_value + m_step <= m_max){
             m_value += m_step;
             updateLabel();
             if (m_func) m_func(m_value);
         }
     }
 
-    void MenuSlider::setLabel(const std::string& label) {
-            if(!label.empty()) {
-                m_baseLabel = label;
-                updateLabel();
-            }
+    void MenuSlider::setLabel(const std::string& label){
+        if(!label.empty()){
+            m_baseLabel = label;
+            updateLabel();
         }
+    }
 }
