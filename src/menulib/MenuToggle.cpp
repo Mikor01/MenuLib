@@ -14,10 +14,6 @@ namespace mr{
         if(!func){
             throw std::invalid_argument("MenuToggle: Function cannot be null");
         }
-        if(!initialState)
-        {
-            m_state = false;
-        }
         updateLabel();
     };
 

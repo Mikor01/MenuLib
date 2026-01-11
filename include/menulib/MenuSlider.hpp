@@ -58,7 +58,7 @@ namespace mr {
         * @param step step size
         * @param func Function to execute when selected
         */
-        MenuSlider(std::string label, int val, int min, int max, int step, std::function<void(int)>& func);
+        MenuSlider(std::string label, int val, int min, int max, int step,const std::function<void(int)>& func);
 
         /**
         * @brief Indicates whether this item represents a terminal menu entry.

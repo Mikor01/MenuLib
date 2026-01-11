@@ -3,7 +3,7 @@
 #include <string>
 
 namespace mr{
-    MenuSlider::MenuSlider(std::string label, int val, int min, int max, int step, std::function<void(int)>& func)
+    MenuSlider::MenuSlider(std::string label, int val, int min, int max, int step, const std::function<void(int)>& func)
         : IMenuItem(label), m_baseLabel(label), m_value(val),
         m_min(min), m_max(max), m_step(step), m_func(func)
     {
