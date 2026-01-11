@@ -46,6 +46,13 @@ char getch_(int echo) {
     return ch;
 }
 
+void clear(){
+#ifdef _WIN32
+    std::system("cls");
+#else
+    std::system("clear");
+#endif
+}
 
 bool isRunning = true;
 bool soundEnabled = true;
@@ -98,7 +105,7 @@ int main() {
         mr::MenuNavigator nav(mainMenu);
 
         while (isRunning) {
-            std::system("clear");
+            clear();
 
             std::cout << "--- " << nav.getCurrentTitle() << " ---\n\n";
 
@@ -134,7 +141,7 @@ int main() {
         }
     }
     catch (const std::exception& e) {
-        std::system("clear");
+        clear();
         std::cerr << "Error: " << e.what() << "\n";
         delete mainMenu;
         return 1;
