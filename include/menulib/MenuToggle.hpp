@@ -62,7 +62,7 @@ namespace mr{
             /**
             * @brief updates display label with respect to the current state
             *
-            * @param new display label to set
+            * @param label new display label to set
             */
             void setLabel(const std::string& label) override;
 

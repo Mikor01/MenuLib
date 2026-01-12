@@ -91,7 +91,7 @@ namespace mr {
         /**
         * @brief sets display label with respect to current value
         *
-        * @param new display label to set
+        * @param label new display label to set
         */
         void setLabel(const std::string& label) override;
     };
