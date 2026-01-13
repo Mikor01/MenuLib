@@ -1,6 +1,17 @@
 #include "menulib/MenuSlider.hpp"
+#include "menulib/IMenuItem.hpp"
 
 namespace mr{
+
+    MenuSlider::MenuSlider(const std::string& label)
+        : IMenuItem(label), m_baseLabel(label), m_value(0), m_min(0), m_max(100), m_step(1), m_func(nullptr)
+    {
+        if(label.empty()){
+            throw std::invalid_argument("MenuSlider: Label cannot be empty");
+        }
+        updateLabel();
+    }
+
     MenuSlider::MenuSlider(const std::string& label, int val, int min, int max,
                            int step, const std::function<void(int)>& func)
         : IMenuItem(label), m_baseLabel(label), m_value(val), m_min(min), m_max(max), m_step(step), m_func(func)

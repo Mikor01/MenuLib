@@ -1,6 +1,13 @@
 #include "menulib/MenuOption.hpp"
 
 namespace mr{
+
+    MenuOption::MenuOption(const std::string& label) : IMenuItem(label), m_func(nullptr){
+        if(label.empty()){
+            throw std::invalid_argument("MenuOption: Label cannot be empty");
+        }
+    };
+
     MenuOption::MenuOption(const std::string& label, const std::function<void()>& func) : IMenuItem(label), m_func(func){
         if(label.empty()){
             throw std::invalid_argument("MenuOption: Label cannot be empty");

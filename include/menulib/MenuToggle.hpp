@@ -35,6 +35,16 @@ namespace mr{
         public:
 
             /**
+            * @brief Placeholder constructor
+            *
+            * Creates a placeholder instance with given label and state, but doens't have a callback
+            *
+            * @param label Display text label
+            * @param initialState initial state of controlled bool
+            */
+            MenuToggle(const std::string& label, bool initialState);
+
+            /**
             * @brief Parametric constructor
             *
             * Creates an instance with given label, initial state and function to execute

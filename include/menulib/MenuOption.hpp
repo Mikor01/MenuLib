@@ -20,6 +20,15 @@ namespace mr{
         public:
 
             /**
+            * @brief Placeholder constructor
+            *
+            * Creates a placeholder instance with given label, which doesn't have a function
+            *
+            * @param label Display text label
+            */
+            MenuOption(const std::string& label);
+
+            /**
             * @brief Parametric constructor
             *
             * Creates an instance with given label and function to execute
@@ -28,6 +37,7 @@ namespace mr{
             * @param func Function to execute when selected
             */
             MenuOption(const std::string& label, const std::function<void()>& func);
+
 
             /**
             * @brief Executes the function associated with this menu option.

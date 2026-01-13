@@ -45,6 +45,16 @@ namespace mr {
             }
 
         public:
+
+            /**
+            * @brief Placeholder constructor
+            *
+            * Creates an instance with given label, default constrains, steps and no function
+            *
+            * @param label Display text label
+            */
+            MenuSlider(const std::string& label);
+
             /**
             * @brief Parametric constructor
             *

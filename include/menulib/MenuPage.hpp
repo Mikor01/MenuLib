@@ -32,6 +32,13 @@ namespace mr{
         public:
 
             /**
+            * @brief Placeholder Menu Page constructor
+            *
+            * Creates a menu page item with title "New Page" and no parent.
+            */
+            MenuPage();
+
+            /**
             * @brief Parametric Menu Page constructor
             *
             * Creates a menu page item with given title and parent.

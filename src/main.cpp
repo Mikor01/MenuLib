@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <iostream>
 #include <vector>
 #include <string>
@@ -113,7 +114,7 @@ int main() {
             int index = nav.getCurrentIndex();
 
             for (size_t i = 0; i < items.size(); ++i) {
-                if (i == index) {
+                if (static_cast<int>(i) == index) {
                     std::cout << " > " << items[i]->getLabel() << " <\n";
                 } else {
                     std::cout << "   " << items[i]->getLabel() << "\n";

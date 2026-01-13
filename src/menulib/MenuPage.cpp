@@ -1,7 +1,10 @@
 #include "menulib/MenuPage.hpp"
+#include "menulib/IMenuItem.hpp"
 #include "menulib/MenuNavigator.hpp"
 
 namespace mr{
+
+    MenuPage::MenuPage() : IMenuItem("New Page"), m_parent(nullptr){}
 
     MenuPage::MenuPage(const std::string& label, MenuPage* parent) : IMenuItem(label), m_parent(parent){
         if(label.empty()){
