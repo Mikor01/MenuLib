@@ -6,6 +6,12 @@ A simple C++ menu library created as part of an Object-Oriented Programming proj
 
 The library provides functionality to create a simple multi-page menu with toggles, sliders and menu options which execute user-defined functions when selected.
 
+## Docs
+
+Docs are available to build locally using doxygen or deployed online at 
+
+https://mikor01.github.io/MenuLib/index.html
+
 ## Prerequisites
 
 - C++17 compatible compiler
