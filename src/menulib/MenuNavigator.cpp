@@ -37,6 +37,7 @@ namespace mr{
 
         m_currentIndex++;
 
+        // wrap around to the start if we exceed list size
         if(m_currentIndex >= count)
         {
             m_currentIndex = 0;
@@ -52,6 +53,7 @@ namespace mr{
 
         m_currentIndex--;
 
+        // wrap around to the start if we exceed list size
         if(m_currentIndex < 0)
         {
             m_currentIndex = count-1;
@@ -68,6 +70,10 @@ namespace mr{
             if (items.empty()) {
                 return;
             }
+
+            // We pass "this" (Navigator) to the item
+            // If it's a Page it will use the navigator to enter rhe submenu
+            // All other items will ignore the navigator and/or execute their function
 
             items[m_currentIndex]->onSelect(this);
     }

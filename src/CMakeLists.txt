@@ -3,7 +3,6 @@ add_library(menulib
     menulib/MenuOption.cpp
     menulib/MenuNavigator.cpp
     menulib/MenuToggle.cpp
-    menulib/MenuSlider.cpp
 )
 
 target_include_directories(menulib PUBLIC

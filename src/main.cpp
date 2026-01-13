@@ -95,7 +95,7 @@ int main() {
 
         settingsMenu->addItem(new mr::MenuToggle("Sound", soundEnabled, onSoundChange));
 
-        settingsMenu->addItem(new mr::MenuSlider("Volume", volumeLevel, 0, 100, 5, onVolumeChange));
+        settingsMenu->addItem(new mr::MenuSlider<int>("Volume", volumeLevel, 0, 100, 5, onVolumeChange));
 
         settingsMenu->addItem(new mr::MenuOption("Video Settings", videoSettings));
 

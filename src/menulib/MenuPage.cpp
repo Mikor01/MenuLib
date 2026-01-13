@@ -13,6 +13,7 @@ namespace mr{
     }
 
     MenuPage::~MenuPage() {
+        // Clean up all child items to prevent memory leaks.
         for (IMenuItem* item : m_items) {
             delete item;
         }
