@@ -1,12 +1,8 @@
 #include "menulib/MenuToggle.hpp"
-#include "menulib/IMenuItem.hpp"
-#include <string>
-
 
 namespace mr{
     MenuToggle::MenuToggle(const std::string& label, bool initialState, const std::function<void(bool)>& func)
-        : IMenuItem(label), m_baseLabel(label),
-        m_state(initialState), m_func(func)
+        : IMenuItem(label), m_state(initialState), m_baseLabel(label), m_func(func)
     {
         if(label.empty()){
             throw std::invalid_argument("MenuToggle: Label cannot be empty");

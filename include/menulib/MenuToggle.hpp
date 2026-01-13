@@ -1,7 +1,8 @@
 #pragma once
-#include <functional>
-#include <stdexcept>
 #include "IMenuItem.hpp"
+#include <stdexcept>
+#include <functional>
+
 
 namespace mr{
     /**

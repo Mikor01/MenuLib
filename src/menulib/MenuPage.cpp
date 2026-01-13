@@ -1,5 +1,4 @@
 #include "menulib/MenuPage.hpp"
-#include "menulib/IMenuItem.hpp"
 #include "menulib/MenuNavigator.hpp"
 
 namespace mr{

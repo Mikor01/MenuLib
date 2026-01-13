@@ -1,24 +1,24 @@
 #include "menulib/MenuSlider.hpp"
-#include "menulib/IMenuItem.hpp"
-#include <stdexcept>
-#include <string>
 
 namespace mr{
-    MenuSlider::MenuSlider(std::string label, int val, int min, int max, int step, const std::function<void(int)>& func)
-        : IMenuItem(label), m_baseLabel(label), m_value(val),
-        m_min(min), m_max(max), m_step(step), m_func(func)
+    MenuSlider::MenuSlider(const std::string& label, int val, int min, int max,
+                           int step, const std::function<void(int)>& func)
+        : IMenuItem(label), m_baseLabel(label), m_value(val), m_min(min), m_max(max), m_step(step), m_func(func)
     {
         if(label.empty()){
-            throw std::invalid_argument("MenuToggle: Label cannot be empty");
+            throw std::invalid_argument("MenuSlider: Label cannot be empty");
         }
         if(!func){
-            throw std::invalid_argument("MenuToggle: Function cannot be null");
+            throw std::invalid_argument("MenuSlider: Function cannot be null");
         }
         if(min >= max){
-            throw std::invalid_argument("MenuToggle: Max cannot be equal or less than Min");
+            throw std::invalid_argument("MenuSlider: Max cannot be equal or less than Min");
         }
         if(val < min || val > max) {
-            throw std::invalid_argument("MenuToggle: Initial value cannot be out of bounds");
+            throw std::invalid_argument("MenuSlider: Initial value cannot be out of bounds");
+        }
+        if(step <= 0) {
+            throw std::invalid_argument("MenuSlider: Step must be positive integer");
         }
         updateLabel();
     }
@@ -41,7 +41,9 @@ namespace mr{
         if (m_value + m_step <= m_max){
             m_value += m_step;
             updateLabel();
-            if (m_func) m_func(m_value);
+            if (m_func){
+                m_func(m_value);
+            }
         }
     }
 
@@ -51,4 +53,61 @@ namespace mr{
             updateLabel();
         }
     }
+
+    void MenuSlider::setMin(int min){
+        if(min >= m_max)
+        {
+            return;
+        }
+
+        m_min = min;
+
+        if(m_value < min)
+        {
+            m_value = min;
+            updateLabel();
+        }
+    }
+
+    void MenuSlider::setMax(int max){
+        if(max <= m_min)
+        {
+            return;
+        }
+
+        m_max = max;
+
+        if(m_value > max)
+        {
+            m_value = max;
+            updateLabel();
+        }
+    }
+
+    void MenuSlider::setStep(int step){
+        if(step <= 0)
+        {
+            return;
+        }
+
+        m_step = step;
+    }
+
+    void MenuSlider::setValue(int val) {
+        if (val < m_min){
+            val = m_min;
+        }
+        if (val > m_max){
+            val = m_max;
+        }
+
+        if (m_value != val) {
+            m_value = val;
+            updateLabel();
+            if (m_func){
+                m_func(m_value);
+            }
+        }
+    }
+
 }

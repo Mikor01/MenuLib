@@ -1,10 +1,11 @@
 #pragma once
 #include "MenuPage.hpp"
 #include <stdexcept>
-#include <vector>
 #include <string>
+#include <vector>
 
 namespace mr{
+
     /**
     * @brief Controls navigation between menu pages and selection of items.
     *

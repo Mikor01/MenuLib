@@ -1,6 +1,4 @@
 #include "menulib/MenuOption.hpp"
-#include "menulib/IMenuItem.hpp"
-
 
 namespace mr{
     MenuOption::MenuOption(const std::string& label, const std::function<void()>& func) : IMenuItem(label), m_func(func){

@@ -16,13 +16,14 @@ namespace mr{
     * that can be displayed and selected by the user.
     */
     class IMenuItem{
-
-        protected:
+        private:
 
             /**
             * @brief Display label of the menu item.
             */
             std::string m_label {};
+
+        protected:
 
             /**
             * @brief Constructs a menu item with given label.
